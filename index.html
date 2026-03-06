@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jackson Jackson &amp; Jackson LLC - Veteran Claims Screening</title>
+  <style>
+    :root {
+      --navy:       #0d1f3c;
+      --navy-mid:   #1a3460;
+      --gold:       #c8a84b;
+      --gold-light: #f0d98a;
+      --red:        #8b1a1a;
+      --white:      #ffffff;
+      --off-white:  #f4f5f7;
+      --gray:       #6b7280;
+      --border:     #d1d5db;
+      --card-shadow: 0 2px 12px rgba(0,0,0,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: var(--off-white);
+      color: #1f2937;
+      line-height: 1.65;
+      font-size: 16px;
+    }
+
+    /* ===================== HEADER ===================== */
+    header {
+      background: var(--navy);
+      border-bottom: 4px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+    }
+
+    .header-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    /* SVG Logo */
+    .logo-svg { flex-shrink: 0; }
+
+    .header-text h1 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      line-height: 1.2;
+    }
+
+    .header-text .tagline {
+      font-size: 0.82rem;
+      color: var(--gold-light);
+      letter-spacing: 0.5px;
+      margin-top: 3px;
+    }
+
+    /* ===================== HERO ===================== */
+    .hero {
+      background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 100%);
+      color: var(--white);
+      padding: 56px 24px 52px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Cpath d='M30 5 L32 20 L47 20 L35 29 L40 44 L30 35 L20 44 L25 29 L13 20 L28 20Z' fill='rgba(200,168,75,0.04)'/%3E%3C/svg%3E") repeat;
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; max-width: 700px; margin: 0 auto; }
+
+    .hero-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .hero h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: var(--white);
+    }
+
+    .hero h2 span { color: var(--gold-light); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #c9d4e8;
+      max-width: 580px;
+      margin: 0 auto 28px;
+      line-height: 1.7;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 13px 30px;
+      border-radius: 5px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      display: inline-block;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); }
+    .btn-primary:active { transform: translateY(1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.92rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 12px 28px;
+      border-radius: 5px;
+      text-decoration: none;
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-block;
+    }
+
+    .btn-outline:hover { border-color: var(--gold-light); background: rgba(255,255,255,0.07); }
+
+    /* ===================== STATS BAR ===================== */
+    .stats-bar {
+      background: var(--gold);
+      padding: 18px 24px;
+    }
+
+    .stats-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .stat-item {
+      text-align: center;
+      color: var(--navy);
+    }
+
+    .stat-item .stat-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .stat-item .stat-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    /* ===================== LAYOUT ===================== */
+    .page-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .section-sub {
+      font-size: 0.93rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+
+    /* ===================== NOTICE ===================== */
+    .notice {
+      background: #fffbeb;
+      border-left: 5px solid var(--gold);
+      border-radius: 6px;
+      padding: 16px 20px;
+      margin-bottom: 32px;
+      font-size: 0.91rem;
+      color: #5c4a00;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .notice-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: -1px; }
+    .notice strong { color: #3d3200; display: block; margin-bottom: 3px; }
+
+    /* ===================== STATE BENEFITS SECTION ===================== */
+    .benefits-section { margin-bottom: 56px; }
+
+    .benefits-intro {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 22px 24px;
+      margin-bottom: 20px;
+      box-shadow: var(--card-shadow);
+      border-left: 5px solid var(--navy);
+      font-size: 0.94rem;
+      color: #374151;
+    }
+
+    .benefits-intro strong { color: var(--navy); }
+
+    /* Federal Resources */
+    .federal-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .resource-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 600;
+      font-size: 0.88rem;
+      transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+
+    .resource-link:hover {
+      border-color: var(--gold);
+      box-shadow: 0 3px 10px rgba(200,168,75,0.2);
+      transform: translateY(-1px);
+    }
+
+    .resource-link .link-icon { font-size: 1.25rem; flex-shrink: 0; }
+
+    /* State Tabs */
+    .tabs-wrapper {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+    }
+
+    .tab-bar {
+      display: flex;
+      background: var(--navy);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tab-bar::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      color: #a0b0cc;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      padding: 13px 18px;
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: color 0.15s, border-color 0.15s, background 0.15s;
+      flex-shrink: 0;
+    }
+
+    .tab-btn:hover { color: var(--white); background: rgba(255,255,255,0.06); }
+
+    .tab-btn.active {
+      color: var(--gold-light);
+      border-bottom-color: var(--gold);
+      background: rgba(200,168,75,0.08);
+    }
+
+    .tab-panel { display: none; padding: 18px; }
+    .tab-panel.active { display: block; }
+
+    .tab-tip {
+      font-size: 0.8rem;
+      color: var(--gray);
+      background: #f8f9fb;
+      border-left: 3px solid var(--gold);
+      padding: 8px 12px;
+      border-radius: 0 4px 4px 0;
+      margin-bottom: 14px;
+    }
+
+    /* State Grid */
+    .states-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 8px;
+    }
+
+    .state-card {
+      background: #f8f9fb;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 13px;
+      text-decoration: none;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+
+    .state-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 2px 8px rgba(200,168,75,0.18);
+      background: var(--white);
+    }
+
+    .state-card .state-name {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: block;
+    }
+
+    .state-card .state-desc {
+      font-size: 0.72rem;
+      color: var(--gray);
+      margin-top: 1px;
+      display: block;
+    }
+
+    /* ===================== QUALIFICATION GATE ===================== */
+    .qual-gate {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      border: 1px solid #e5e7eb;
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .qual-header {
+      background: var(--red);
+      color: var(--white);
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .qual-header-icon { font-size: 1.5rem; flex-shrink: 0; }
+
+    .qual-header h3 {
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.2;
+    }
+
+    .qual-header p {
+      font-size: 0.82rem;
+      opacity: 0.88;
+      margin-top: 3px;
+    }
+
+    .qual-body { padding: 28px; }
+
+    .qual-intro {
+      font-size: 0.97rem;
+      color: #374151;
+      margin-bottom: 22px;
+      line-height: 1.7;
+      border-left: 4px solid var(--red);
+      padding-left: 16px;
+    }
+
+    .qual-intro strong { color: var(--navy); }
+
+    .qual-requirements {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+
+    .qual-req-card {
+      background: #f8f9fb;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .qual-req-card.met { border-color: #10b981; background: #f0fdf4; }
+    .qual-req-card.req { border-color: #f59e0b; background: #fffbeb; }
+
+    .req-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
+
+    .req-title {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .req-desc { font-size: 0.84rem; color: #4b5563; line-height: 1.5; }
+
+    .qual-divider {
+      border: none;
+      border-top: 1.5px dashed var(--border);
+      margin: 24px 0;
+    }
+
+    .qual-confirm-label {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: #fffbeb;
+      border: 2px solid #f59e0b;
+      border-radius: 8px;
+      padding: 18px 20px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      margin-bottom: 20px;
+    }
+
+    .qual-confirm-label:has(input:checked) {
+      border-color: #10b981;
+      background: #f0fdf4;
+    }
+
+    .qual-confirm-label input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+      flex-shrink: 0;
+      accent-color: var(--navy);
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .qual-confirm-text {
+      font-size: 0.92rem;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .qual-confirm-text strong { color: var(--navy); }
+
+    .pay-btn-wrap { text-align: center; }
+
+    .pay-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #6b7280;
+      color: var(--white);
+      border: none;
+      padding: 18px 48px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      border-radius: 8px;
+      cursor: not-allowed;
+      border-bottom: 4px solid rgba(0,0,0,0.2);
+      transition: background 0.2s, transform 0.1s, border-color 0.2s;
+      text-decoration: none;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .pay-btn.active {
+      background: #16a34a;
+      border-bottom-color: #15803d;
+      opacity: 1;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .pay-btn.active:hover { background: #15803d; }
+    .pay-btn.active:active { transform: translateY(2px); border-bottom-width: 2px; }
+
+    .pay-btn-icon { font-size: 1.3rem; }
+
+    .pay-note {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: var(--gray);
+    }
+
+    .pay-note a { color: var(--navy); }
+
+    /* ===================== FORM CARD ===================== */
+    .form-card {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: var(--card-shadow);
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .form-section-header {
+      background: var(--navy);
+      color: var(--white);
+      padding: 14px 28px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border-left: 5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .form-section-header .section-num {
+      background: var(--gold);
+      color: var(--navy);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .form-body { padding: 28px 28px 32px; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px 28px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full-width { grid-column: 1 / -1; }
+
+    label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+
+    label .required { color: var(--red); }
+
+    label .hint {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--gray);
+      font-size: 0.78rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.96rem;
+      font-family: inherit;
+      color: #1f2937;
+      background: #fafbfc;
+      transition: border-color 0.18s, box-shadow 0.18s;
+      line-height: 1.4;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(13,31,60,0.1);
+      background: var(--white);
+    }
+
+    textarea { resize: vertical; min-height: 110px; }
+    select { cursor: pointer; }
+
+    /* Checkbox group */
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 2px;
+    }
+
+    .cb-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f3f4f6;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      padding: 7px 13px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #374151;
+      text-transform: none;
+      letter-spacing: 0;
+      transition: border-color 0.15s, background 0.15s;
+    }
+
+    .cb-item:hover { border-color: var(--navy); background: #eef1f8; }
+
+    .cb-item input[type="checkbox"] {
+      width: auto;
+      cursor: pointer;
+      accent-color: var(--navy);
+    }
+
+    /* Consent checkboxes */
+    .consent-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 16px;
+      background: #f8f9fb;
+      border: 1.5px solid var(--border);
+      border-radius: 7px;
+      font-size: 0.92rem;
+      color: #374151;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+
+    .consent-item:hover { border-color: var(--navy); }
+
+    .consent-item input[type="checkbox"] {
+      width: auto;
+      margin-top: 3px;
+      accent-color: var(--navy);
+      flex-shrink: 0;
+    }
+
+    /* Submit */
+    .submit-section {
+      background: #f0f2f8;
+      padding: 26px 28px;
+      border-top: 2px solid #e5e7eb;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .submit-btn {
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      padding: 15px 40px;
+      font-size: 0.97rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      border-radius: 6px;
+      cursor: pointer;
+      border-bottom: 4px solid var(--gold);
+      transition: background 0.2s, transform 0.1s;
+      flex-shrink: 0;
+    }
+
+    .submit-btn:hover { background: var(--navy-mid); }
+    .submit-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
+
+    .submit-note {
+      font-size: 0.82rem;
+      color: var(--gray);
+      flex: 1;
+      min-width: 200px;
+      line-height: 1.5;
+    }
+
+    /* ===================== FOOTER ===================== */
+    footer {
+      background: var(--navy);
+      color: #9ca3af;
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 0.83rem;
+      border-top: 4px solid var(--gold);
+    }
+
+    .footer-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .footer-org { font-size: 1rem; font-weight: 800; color: var(--gold-light); text-transform: uppercase; letter-spacing: 1px; }
+    .footer-links { margin: 10px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+    .footer-links a { color: #9ca3af; text-decoration: none; font-size: 0.82rem; }
+    .footer-links a:hover { color: var(--gold-light); }
+
+    .crisis-banner {
+      background: var(--red);
+      color: var(--white);
+      padding: 10px 24px;
+      font-size: 0.88rem;
+      text-align: center;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 680px) {
+      .form-grid { grid-template-columns: 1fr; gap: 18px; }
+      .form-group.full-width { grid-column: 1; }
+      .header-inner { gap: 12px; }
+      .header-text h1 { font-size: 1.1rem; }
+      .hero h2 { font-size: 1.5rem; }
+      .states-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+      .form-body { padding: 20px 16px 24px; }
+      .submit-section { padding: 20px 16px; }
+      .stat-item .stat-num { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- =========================================================
+     CRISIS LINE BANNER
+========================================================== -->
+<div class="crisis-banner">
+  Veterans Crisis Line: Call or Text <strong>988, then Press 1</strong> &nbsp;|&nbsp; Chat at VeteransCrisisLine.net
+</div>
+
+<!-- =========================================================
+     HEADER
+========================================================== -->
+<header>
+  <div class="header-inner">
+    <!-- Military Eagle / Star Logo (inline SVG) -->
+    <svg class="logo-svg" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="#0d1f3c" stroke="#c8a84b" stroke-width="2.5"/>
+      <!-- Star -->
+      <polygon points="32,10 35.5,22 48,22 38,29.5 41.5,42 32,34.5 22.5,42 26,29.5 16,22 28.5,22"
+               fill="#c8a84b"/>
+      <!-- Three small stars at bottom -->
+      <polygon points="18,50 19.1,53.4 22.7,53.4 19.8,55.5 20.9,58.9 18,56.7 15.1,58.9 16.2,55.5 13.3,53.4 16.9,53.4" fill="#c8a84b" opacity="0.85" transform="scale(0.55) translate(13,38)"/>
+      <polygon points="32,50 33.1,53.4 36.7,53.4 33.8,55.5 34.9,58.9 32,56.7 29.1,58.9 30.2,55.5 27.3,53.4 30.9,53.4" fill="#c8a84b" opacity="0.85" transform="scale(0.55) translate(26,38)"/>
+      <polygon points="46,50 47.1,53.4 50.7,53.4 47.8,55.5 48.9,58.9 46,56.7 43.1,58.9 44.2,55.5 41.3,53.4 44.9,53.4" fill="#c8a84b" opacity="0.85" transform="scale(0.55) translate(39,38)"/>
+      <!-- Laurel arcs -->
+      <path d="M14 48 Q10 38 14 28" stroke="#c8a84b" stroke-width="1.5" fill="none" opacity="0.6"/>
+      <path d="M50 48 Q54 38 50 28" stroke="#c8a84b" stroke-width="1.5" fill="none" opacity="0.6"/>
+    </svg>
+
+    <div class="header-text">
+      <h1>Jackson Jackson &amp; Jackson LLC</h1>
+      <div class="tagline">Veteran Claims Assistance &nbsp;&#9733;&nbsp; Serving Those Who Served</div>
+    </div>
+  </div>
+</header>
+
+<!-- =========================================================
+     HERO
+========================================================== -->
+<div class="hero">
+  <div class="hero-content">
+    <span class="hero-badge">Free Veterans Advocacy</span>
+    <h2>You Served. Now Let Us <span>Fight for You.</span></h2>
+    <p>
+      Too many veterans leave the service unaware of the full benefits they have earned.
+      At Jackson Jackson &amp; Jackson LLC, our team of veteran advocates reviews your
+      service record, disability history, and discharge documents to build the strongest
+      possible case for the benefits and compensation you deserve — at no cost to you.
+    </p>
+    <div class="hero-cta-row">
+      <a href="#screening-form" class="btn-primary">Start Free Screening</a>
+      <a href="#state-benefits" class="btn-outline">View State Benefits</a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">50</div>
+      <div class="stat-label">States Covered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">$0</div>
+      <div class="stat-label">Cost to Veterans</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Confidential</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">48 hrs</div>
+      <div class="stat-label">Response Time</div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================================
+     MAIN CONTENT
+========================================================== -->
+<div class="page-wrap">
+
+  <!-- ======================================================
+       STATE BENEFITS RESOURCE SECTION
+  ======================================================= -->
+  <section class="benefits-section" id="state-benefits">
+
+    <h2 class="section-title">Federal VA Resources</h2>
+    <p class="section-sub">Start here — these federal portals cover compensation, pension, healthcare enrollment, and more.</p>
+
+    <div class="federal-links">
+      <a href="https://www.va.gov" target="_blank" rel="noopener" class="resource-link">
+        <span class="link-icon">&#127981;</span> VA.gov — Main Portal
+      </a>
+      <a href="https://www.benefits.va.gov/compensation/" target="_blank" rel="noopener" class="resource-link">
+        <span class="link-icon">&#128196;</span> Disability Compensation
+      </a>
+      <a href="https://www.va.gov/health-care/apply/application/" target="_blank" rel="noopener" class="resource-link">
+        <span class="link-icon">&#128138;</span> Health Care Enrollment
+      </a>
+      <a href="https://www.ebenefits.va.gov" target="_blank" rel="noopener" class="resource-link">
+        <span class="link-icon">&#128203;</span> eBenefits Portal
+      </a>
+      <a href="https://www.va.gov/decision-reviews/" target="_blank" rel="noopener" class="resource-link">
+        <span class="link-icon">&#9878;&#65039;</span> Appeals &amp; Reviews
+      </a>
+      <a href="https://www.archives.gov/veterans/military-service-records" target="_blank" rel="noopener" class="resource-link">
+        <span class="link-icon">&#128190;</span> Request DD-214 (NPRC)
+      </a>
+    </div>
+
+    <h2 class="section-title">State Veteran Benefits &amp; DMV License Plates</h2>
+    <p class="section-sub">
+      Click your region, then select your state. Each link opens the official state veteran affairs page —
+      look for a <strong>Benefits</strong> or <strong>Motor Vehicle</strong> tab for free/discounted veteran
+      license plates, disabled veteran plates, property tax exemptions, and more.
+    </p>
+
+    <div class="tabs-wrapper">
+      <div class="tab-bar" role="tablist">
+        <button type="button" class="tab-btn active" role="tab" onclick="switchTab(event,'northeast')">Northeast</button>
+        <button type="button" class="tab-btn" role="tab" onclick="switchTab(event,'southeast')">Southeast</button>
+        <button type="button" class="tab-btn" role="tab" onclick="switchTab(event,'midwest')">Midwest</button>
+        <button type="button" class="tab-btn" role="tab" onclick="switchTab(event,'southwest')">Southwest</button>
+        <button type="button" class="tab-btn" role="tab" onclick="switchTab(event,'west')">West</button>
+      </div>
+
+      <!-- NORTHEAST -->
+      <div class="tab-panel active" id="tab-northeast">
+        <p class="tab-tip">ME · NH · VT · MA · RI · CT · NY · NJ · PA · DE · MD · DC</p>
+        <div class="states-grid">
+          <a href="https://www.maine.gov/dvem/bvs/" target="_blank" rel="noopener" class="state-card"><span class="state-name">Maine</span><span class="state-desc">Bureau of Veterans Services</span></a>
+          <a href="https://www.nh.gov/nhveterans/" target="_blank" rel="noopener" class="state-card"><span class="state-name">New Hampshire</span><span class="state-desc">State Veterans Council</span></a>
+          <a href="https://veterans.vermont.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Vermont</span><span class="state-desc">Office of Veterans Affairs</span></a>
+          <a href="https://www.mass.gov/orgs/department-of-veterans-services" target="_blank" rel="noopener" class="state-card"><span class="state-name">Massachusetts</span><span class="state-desc">Dept of Veterans Services</span></a>
+          <a href="https://www.vets.ri.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Rhode Island</span><span class="state-desc">Office of Veterans Services</span></a>
+          <a href="https://portal.ct.gov/DVA" target="_blank" rel="noopener" class="state-card"><span class="state-name">Connecticut</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://veterans.ny.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">New York</span><span class="state-desc">Division of Veterans Services</span></a>
+          <a href="https://www.nj.gov/military/veterans/" target="_blank" rel="noopener" class="state-card"><span class="state-name">New Jersey</span><span class="state-desc">Dept of Military &amp; Veterans</span></a>
+          <a href="https://www.dmva.pa.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Pennsylvania</span><span class="state-desc">Dept of Military &amp; Veterans</span></a>
+          <a href="https://veteransaffairs.delaware.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Delaware</span><span class="state-desc">Commission of Veterans</span></a>
+          <a href="https://veterans.maryland.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Maryland</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://www.dc.gov/service/veterans-benefits-services" target="_blank" rel="noopener" class="state-card"><span class="state-name">Washington D.C.</span><span class="state-desc">Office of Veterans Affairs</span></a>
+        </div>
+      </div>
+
+      <!-- SOUTHEAST -->
+      <div class="tab-panel" id="tab-southeast">
+        <p class="tab-tip">VA · WV · NC · SC · GA · FL · AL · MS · TN · KY · AR · LA</p>
+        <div class="states-grid">
+          <a href="https://www.dvs.virginia.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Virginia</span><span class="state-desc">Dept of Veterans Services</span></a>
+          <a href="https://veterans.wv.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">West Virginia</span><span class="state-desc">Dept of Veterans Assistance</span></a>
+          <a href="https://milvets.nc.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">North Carolina</span><span class="state-desc">Dept of Military &amp; Vet Affairs</span></a>
+          <a href="https://va.sc.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">South Carolina</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://veterans.georgia.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Georgia</span><span class="state-desc">Dept of Veterans Service</span></a>
+          <a href="https://www.floridavets.org" target="_blank" rel="noopener" class="state-card"><span class="state-name">Florida</span><span class="state-desc">Dept of Veterans' Affairs</span></a>
+          <a href="https://va.alabama.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Alabama</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://www.vab.ms.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Mississippi</span><span class="state-desc">Veterans Affairs Board</span></a>
+          <a href="https://www.tn.gov/veteran/" target="_blank" rel="noopener" class="state-card"><span class="state-name">Tennessee</span><span class="state-desc">Dept of Veterans Services</span></a>
+          <a href="https://veterans.ky.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Kentucky</span><span class="state-desc">Center for Veterans Affairs</span></a>
+          <a href="https://veterans.arkansas.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Arkansas</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://www.vetaffairs.la.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Louisiana</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+        </div>
+      </div>
+
+      <!-- MIDWEST -->
+      <div class="tab-panel" id="tab-midwest">
+        <p class="tab-tip">OH · IN · MI · IL · WI · MN · IA · MO · ND · SD · NE · KS</p>
+        <div class="states-grid">
+          <a href="https://dvs.ohio.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Ohio</span><span class="state-desc">Dept of Veterans Services</span></a>
+          <a href="https://www.in.gov/dva/" target="_blank" rel="noopener" class="state-card"><span class="state-name">Indiana</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://www.michigan.gov/mvaa" target="_blank" rel="noopener" class="state-card"><span class="state-name">Michigan</span><span class="state-desc">Veterans Affairs Agency</span></a>
+          <a href="https://www2.illinois.gov/veterans" target="_blank" rel="noopener" class="state-card"><span class="state-name">Illinois</span><span class="state-desc">Dept of Veterans' Affairs</span></a>
+          <a href="https://dva.wi.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Wisconsin</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://mn.gov/mdva/" target="_blank" rel="noopener" class="state-card"><span class="state-name">Minnesota</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://va.iowa.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Iowa</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://mvc.dps.mo.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Missouri</span><span class="state-desc">Veterans Commission</span></a>
+          <a href="https://www.nd.gov/veterans/" target="_blank" rel="noopener" class="state-card"><span class="state-name">North Dakota</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://vetaffairs.sd.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">South Dakota</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://veterans.nebraska.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Nebraska</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://veterans.ks.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Kansas</span><span class="state-desc">Commission on Veterans</span></a>
+        </div>
+      </div>
+
+      <!-- SOUTHWEST -->
+      <div class="tab-panel" id="tab-southwest">
+        <p class="tab-tip">TX · OK · NM · AZ · CO · UT · NV</p>
+        <div class="states-grid">
+          <a href="https://www.tvc.texas.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Texas</span><span class="state-desc">Veterans Commission</span></a>
+          <a href="https://odva.ok.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Oklahoma</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://www.nmdvs.org" target="_blank" rel="noopener" class="state-card"><span class="state-name">New Mexico</span><span class="state-desc">Dept of Veterans Services</span></a>
+          <a href="https://dvs.az.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Arizona</span><span class="state-desc">Dept of Veterans' Services</span></a>
+          <a href="https://cdvs.colorado.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Colorado</span><span class="state-desc">Div of Veterans Services</span></a>
+          <a href="https://veterans.utah.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Utah</span><span class="state-desc">Division of Veterans Affairs</span></a>
+          <a href="https://veterans.nv.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Nevada</span><span class="state-desc">Dept of Veterans Services</span></a>
+        </div>
+      </div>
+
+      <!-- WEST -->
+      <div class="tab-panel" id="tab-west">
+        <p class="tab-tip">CA · OR · WA · ID · MT · WY · AK · HI</p>
+        <div class="states-grid">
+          <a href="https://www.calvet.ca.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">California</span><span class="state-desc">CalVet — Veterans Services</span></a>
+          <a href="https://www.oregon.gov/odva/" target="_blank" rel="noopener" class="state-card"><span class="state-name">Oregon</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://www.dva.wa.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Washington</span><span class="state-desc">Dept of Veterans Affairs</span></a>
+          <a href="https://veterans.idaho.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Idaho</span><span class="state-desc">Division of Veterans Services</span></a>
+          <a href="https://montanadma.org/veterans-services" target="_blank" rel="noopener" class="state-card"><span class="state-name">Montana</span><span class="state-desc">Veterans Services</span></a>
+          <a href="https://www.wyomilitary.wyo.gov/veterans/" target="_blank" rel="noopener" class="state-card"><span class="state-name">Wyoming</span><span class="state-desc">Veterans Commission</span></a>
+          <a href="https://veterans.alaska.gov" target="_blank" rel="noopener" class="state-card"><span class="state-name">Alaska</span><span class="state-desc">Office of Veterans Affairs</span></a>
+          <a href="https://dod.hawaii.gov/ovs/" target="_blank" rel="noopener" class="state-card"><span class="state-name">Hawaii</span><span class="state-desc">Office of Veterans Services</span></a>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- ======================================================
+       ELIGIBILITY NOTICE (above form)
+  ======================================================= -->
+  <div class="qual-gate" style="margin-bottom:32px;">
+    <div class="qual-header">
+      <span class="qual-header-icon">&#9888;&#65039;</span>
+      <div>
+        <h3>Eligibility Requirements — Please Read Before Applying</h3>
+        <p>You must meet ALL three conditions below to qualify for VA disability compensation assistance.</p>
+      </div>
+    </div>
+    <div class="qual-body">
+      <div class="qual-requirements">
+        <div class="qual-req-card req">
+          <span class="req-icon">&#127810;</span>
+          <div>
+            <div class="req-title">Requirement 1 &mdash; Military Service</div>
+            <div class="req-desc">You must have served on <strong>active duty</strong>, <strong>active duty for training</strong>, or <strong>inactive duty training</strong>. National Guard and Reserve members may qualify if activated under federal orders.</div>
+          </div>
+        </div>
+        <div class="qual-req-card req">
+          <span class="req-icon">&#129657;</span>
+          <div>
+            <div class="req-title">Requirement 2 &mdash; Current Disability</div>
+            <div class="req-desc">You must have a <strong>current physical or mental health condition</strong> diagnosed by a medical professional. A past injury alone is not sufficient — a present diagnosis is required.</div>
+          </div>
+        </div>
+        <div class="qual-req-card req">
+          <span class="req-icon">&#128279;</span>
+          <div>
+            <div class="req-title">Requirement 3 &mdash; Service Connection</div>
+            <div class="req-desc">Your disability must be <strong>service-connected</strong> — caused, worsened, or aggravated by an event, injury, illness, or exposure that occurred during your military service.</div>
+          </div>
+        </div>
+        <div class="qual-req-card met">
+          <span class="req-icon">&#128196;</span>
+          <div>
+            <div class="req-title">What to Have Ready</div>
+            <div class="req-desc">Your <strong>DD-214</strong> (Certificate of Release or Discharge from Active Duty). Medical records supporting your claim are strongly recommended but not required to submit this form.</div>
+          </div>
+        </div>
+      </div>
+      <hr class="qual-divider" />
+      <p style="font-size:0.85rem; color:#7f1d1d; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:10px;">We Cannot Assist If:</p>
+      <ul style="font-size:0.88rem; color:#4b5563; line-height:1.9; padding-left:20px;">
+        <li>You received a <strong>Dishonorable Discharge</strong> (bars VA benefits in most cases)</li>
+        <li>Your condition existed <strong>prior to service</strong> and was not aggravated by service</li>
+        <li>You have <strong>no current diagnosis</strong> — past injuries alone are not sufficient</li>
+        <li>You were separated for <strong>misconduct</strong> without a discharge upgrade</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       SCREENING FORM
+  ======================================================= -->
+  <div id="screening-form">
+    <h2 class="section-title">Veteran Screening Form</h2>
+    <p class="section-sub">Complete all required fields (*). A team member will contact you within 48 hours to schedule your free consultation.</p>
+
+    <div class="notice">
+      <span class="notice-icon">&#9888;&#65039;</span>
+      <div>
+        <strong>Important Notice</strong>
+        This form is for initial screening only and does not constitute a VA claim filing.
+        Please have your DD-214 available for reference. All information is kept strictly confidential
+        and used solely to assist with your benefits claim.
+      </div>
+    </div>
+
+    <form
+      action="https://formspree.io/f/xnjgakzz"
+      method="POST"
+      class="form-card"
+    >
+      <input type="hidden" name="_subject" value="New Veteran Screening - Jackson Jackson & Jackson LLC">
+
+      <!-- SECTION 1 -->
+      <div class="form-section-header">
+        <span class="section-num">1</span> Personal Information
+      </div>
+      <div class="form-body">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="full_name">Full Legal Name <span class="required">*</span></label>
+            <input type="text" id="full_name" name="full_name" placeholder="Last, First Middle" required />
+          </div>
+
+          <div class="form-group">
+            <label for="date_of_birth">Date of Birth <span class="required">*</span></label>
+            <input type="date" id="date_of_birth" name="date_of_birth" required />
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="(555) 555-5555" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address <span class="required">*</span></label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="ssn_last4">Last 4 of SSN <span class="required">*</span> <span class="hint">(for ID purposes only)</span></label>
+            <input type="text" id="ssn_last4" name="ssn_last4" maxlength="4" placeholder="XXXX" pattern="\d{4}" required />
+          </div>
+
+          <div class="form-group">
+            <label for="va_file_number">VA File Number <span class="hint">(if known)</span></label>
+            <input type="text" id="va_file_number" name="va_file_number" placeholder="Optional" />
+          </div>
+
+          <div class="form-group">
+            <label for="state_of_residence">State of Residence <span class="required">*</span></label>
+            <select id="state_of_residence" name="state_of_residence" required>
+              <option value="">-- Select State --</option>
+              <option>Alabama</option><option>Alaska</option><option>Arizona</option><option>Arkansas</option>
+              <option>California</option><option>Colorado</option><option>Connecticut</option><option>Delaware</option>
+              <option>Florida</option><option>Georgia</option><option>Hawaii</option><option>Idaho</option>
+              <option>Illinois</option><option>Indiana</option><option>Iowa</option><option>Kansas</option>
+              <option>Kentucky</option><option>Louisiana</option><option>Maine</option><option>Maryland</option>
+              <option>Massachusetts</option><option>Michigan</option><option>Minnesota</option><option>Mississippi</option>
+              <option>Missouri</option><option>Montana</option><option>Nebraska</option><option>Nevada</option>
+              <option>New Hampshire</option><option>New Jersey</option><option>New Mexico</option><option>New York</option>
+              <option>North Carolina</option><option>North Dakota</option><option>Ohio</option><option>Oklahoma</option>
+              <option>Oregon</option><option>Pennsylvania</option><option>Rhode Island</option><option>South Carolina</option>
+              <option>South Dakota</option><option>Tennessee</option><option>Texas</option><option>Utah</option>
+              <option>Vermont</option><option>Virginia</option><option>Washington</option><option>West Virginia</option>
+              <option>Wisconsin</option><option>Wyoming</option><option>Washington D.C.</option>
+            </select>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="form-section-header">
+        <span class="section-num">2</span> Military Service Record
+      </div>
+      <div class="form-body">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="branch">Branch of Service <span class="required">*</span></label>
+            <select id="branch" name="branch" required>
+              <option value="">-- Select Branch --</option>
+              <option>Army</option>
+              <option>Navy</option>
+              <option>Marine Corps</option>
+              <option>Air Force</option>
+              <option>Space Force</option>
+              <option>Coast Guard</option>
+              <option>National Guard</option>
+              <option>Army Reserve</option>
+              <option>Navy Reserve</option>
+              <option>Marine Corps Reserve</option>
+              <option>Air Force Reserve</option>
+              <option>Coast Guard Reserve</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="enlistment_date">Enlistment / Entry Date <span class="required">*</span></label>
+            <input type="date" id="enlistment_date" name="enlistment_date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="service_start">Service Period Start <span class="required">*</span></label>
+            <input type="date" id="service_start" name="service_start" required />
+          </div>
+
+          <div class="form-group">
+            <label for="service_end">Service Period End <span class="required">*</span></label>
+            <input type="date" id="service_end" name="service_end" required />
+          </div>
+
+          <div class="form-group">
+            <label for="mos_afsc">MOS / AFSC / Rate <span class="hint">(Job Code)</span></label>
+            <input type="text" id="mos_afsc" name="mos_afsc" placeholder="e.g. 11B, 0311, 68W" />
+          </div>
+
+          <div class="form-group">
+            <label for="highest_rank">Highest Rank Achieved</label>
+            <input type="text" id="highest_rank" name="highest_rank" placeholder="e.g. E-5 / SGT" />
+          </div>
+
+          <div class="form-group">
+            <label for="character_of_service">Character of Service <span class="required">*</span> <span class="hint">(DD-214 Block 24)</span></label>
+            <select id="character_of_service" name="character_of_service" required>
+              <option value="">-- Select --</option>
+              <option value="Honorable">Honorable</option>
+              <option value="General (Under Honorable Conditions)">General (Under Honorable Conditions)</option>
+              <option value="Other Than Honorable (OTH)">Other Than Honorable (OTH)</option>
+              <option value="Bad Conduct Discharge (BCD)">Bad Conduct Discharge (BCD)</option>
+              <option value="Dishonorable">Dishonorable</option>
+              <option value="Uncharacterized / Entry Level">Uncharacterized / Entry Level</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="type_of_separation">Type of Separation <span class="hint">(DD-214 Block 23)</span></label>
+            <select id="type_of_separation" name="type_of_separation">
+              <option value="">-- Select --</option>
+              <option value="Honorable Discharge">Honorable Discharge</option>
+              <option value="General Discharge">General Discharge</option>
+              <option value="Release from Active Duty (REFRAD)">Release from Active Duty (REFRAD)</option>
+              <option value="Retirement">Retirement</option>
+              <option value="Dropped from the Rolls (DFR)">Dropped from the Rolls (DFR)</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="separation_code">Separation Code <span class="hint">(DD-214 Block 26 — e.g. JFF, JFC)</span></label>
+            <input type="text" id="separation_code" name="separation_code" placeholder="e.g. JFF" style="text-transform:uppercase" />
+          </div>
+
+          <div class="form-group">
+            <label for="reentry_code">RE Code <span class="hint">(DD-214 Block 27)</span></label>
+            <input type="text" id="reentry_code" name="reentry_code" placeholder="e.g. RE-1, RE-3" />
+          </div>
+
+          <div class="form-group full-width">
+            <label for="narrative_reason">Narrative Reason for Separation <span class="hint">(DD-214 Block 28)</span></label>
+            <input type="text" id="narrative_reason" name="narrative_reason" placeholder="e.g. Completion of Required Active Service" />
+          </div>
+
+          <div class="form-group full-width">
+            <label>Deployments / Combat Service <span class="hint">(check all that apply)</span></label>
+            <div class="checkbox-group">
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="OIF (Iraq)" /> OIF — Iraq</label>
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="OEF (Afghanistan)" /> OEF — Afghanistan</label>
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="Gulf War" /> Gulf War</label>
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="Vietnam" /> Vietnam</label>
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="Korea" /> Korea</label>
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="Syria / OIR" /> Syria / OIR</label>
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="Other Combat Zone" /> Other Combat Zone</label>
+              <label class="cb-item"><input type="checkbox" name="deployment[]" value="None" /> None</label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="form-section-header">
+        <span class="section-num">3</span> Current Disability Status
+      </div>
+      <div class="form-body">
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label for="current_rating">Current VA Disability Rating <span class="required">*</span></label>
+            <select id="current_rating" name="current_rating" required>
+              <option value="">-- Select --</option>
+              <option value="0%">0%</option>
+              <option value="10%">10%</option>
+              <option value="20%">20%</option>
+              <option value="30%">30%</option>
+              <option value="40%">40%</option>
+              <option value="50%">50%</option>
+              <option value="60%">60%</option>
+              <option value="70%">70%</option>
+              <option value="80%">80%</option>
+              <option value="90%">90%</option>
+              <option value="100% Schedular">100% Schedular</option>
+              <option value="100% P&amp;T">100% Permanent &amp; Total (P&amp;T)</option>
+              <option value="TDIU">TDIU (Individual Unemployability)</option>
+              <option value="No rating - never filed">No rating — never filed</option>
+              <option value="No rating - denied">No rating — denied / appeal pending</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="receiving_compensation">Currently Receiving VA Compensation?</label>
+            <select id="receiving_compensation" name="receiving_compensation">
+              <option value="">-- Select --</option>
+              <option value="Yes">Yes</option>
+              <option value="No">No</option>
+              <option value="Pending">Pending — Decision Expected</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="rated_conditions">Current Rated Conditions <span class="hint">(list each condition and % rating if known)</span></label>
+            <textarea id="rated_conditions" name="rated_conditions"
+              placeholder="e.g. PTSD 50%, Tinnitus 10%, Lumbar strain 20%"></textarea>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="new_conditions">Conditions You Want to Claim or Increase <span class="hint">(describe how each relates to your service)</span></label>
+            <textarea id="new_conditions" name="new_conditions"
+              placeholder="e.g. Knee injury from training in 2009, hearing loss from range exposure, sleep apnea..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="previously_filed">Previously Filed a VA Claim?</label>
+            <select id="previously_filed" name="previously_filed">
+              <option value="">-- Select --</option>
+              <option value="Yes">Yes</option>
+              <option value="No - first time">No — first time filing</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="claim_type">Type of Assistance Needed</label>
+            <select id="claim_type" name="claim_type">
+              <option value="">-- Select --</option>
+              <option value="New Claim">New Claim (never filed)</option>
+              <option value="Increase Existing Rating">Increase Existing Rating</option>
+              <option value="Appeal Denial">Appeal a Denial</option>
+              <option value="TDIU Application">TDIU / Individual Unemployability</option>
+              <option value="Discharge Upgrade">Discharge Upgrade</option>
+              <option value="Multiple">Multiple of the above</option>
+              <option value="Unsure">Unsure — need guidance</option>
+            </select>
+          </div>
+
+          <div class="form-group full-width">
+            <label for="additional_info">Additional Information <span class="hint">(anything else we should know)</span></label>
+            <textarea id="additional_info" name="additional_info"
+              placeholder="Any other details, prior claims history, specific concerns, or questions for our team..."></textarea>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="form-section-header">
+        <span class="section-num">4</span> Authorization &amp; Consent
+      </div>
+      <div class="form-body">
+        <div class="form-grid">
+
+          <div class="form-group full-width">
+            <label class="consent-item">
+              <input type="checkbox" name="consent" value="agreed" required />
+              I certify that the information provided above is accurate and complete to the best of
+              my knowledge. I authorize Jackson Jackson &amp; Jackson LLC to use my information
+              solely for the purpose of assisting with my VA benefits claim.
+              <span class="required">*</span>
+            </label>
+          </div>
+
+          <div class="form-group full-width">
+            <label class="consent-item">
+              <input type="checkbox" name="contact_ok" value="yes" />
+              I agree to be contacted by phone or email by a Jackson Jackson &amp; Jackson LLC
+              team member regarding my screening results and next steps.
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="submit-section">
+        <button type="submit" class="submit-btn">Submit Screening Form</button>
+        <p class="submit-note">
+          Your information is transmitted securely via encrypted form submission.
+          A veteran advocate will contact you within 48 hours. Have your DD-214 ready
+          for your consultation.
+        </p>
+      </div>
+
+    </form>
+  </div>
+
+</div><!-- end page-wrap -->
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+<footer>
+  <div class="footer-logo-row">
+    <svg width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="32" cy="32" r="30" fill="#0d1f3c" stroke="#c8a84b" stroke-width="2"/>
+      <polygon points="32,10 35.5,22 48,22 38,29.5 41.5,42 32,34.5 22.5,42 26,29.5 16,22 28.5,22" fill="#c8a84b"/>
+    </svg>
+    <span class="footer-org">Jackson Jackson &amp; Jackson LLC</span>
+  </div>
+  <div class="footer-links">
+    <a href="#screening-form">Screening Form</a>
+    <a href="#state-benefits">State Benefits</a>
+    <a href="https://www.va.gov" target="_blank" rel="noopener">VA.gov</a>
+  </div>
+  <p style="margin-top:10px;">
+    This organization is staffed by veterans dedicated to helping fellow veterans navigate the claims process.
+    We are not affiliated with or endorsed by the U.S. Department of Veterans Affairs.
+  </p>
+  <p style="margin-top:8px; font-size:0.78rem; opacity:0.7;">
+    &copy; 2025 Jackson Jackson &amp; Jackson LLC. All rights reserved.
+  </p>
+</footer>
+
+<script>
+  // Tab switching for state benefits
+  function switchTab(e, region) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    e.currentTarget.classList.add('active');
+    document.getElementById('tab-' + region).classList.add('active');
+  }
+
+  // Qualification gate — enable pay button only when confirmed
+  // Replace STRIPE_PAYMENT_LINK_HERE with your actual Stripe Payment Link URL
+  var STRIPE_LINK = 'STRIPE_PAYMENT_LINK_HERE';
+
+  function togglePayBtn(checkbox) {
+    var btn = document.getElementById('pay-btn');
+    if (checkbox.checked) {
+      btn.classList.add('active');
+      btn.setAttribute('href', STRIPE_LINK);
+      btn.setAttribute('aria-disabled', 'false');
+      btn.innerHTML = '<span class="pay-btn-icon">&#128275;</span> Pay $20 &amp; Proceed to Application';
+    } else {
+      btn.classList.remove('active');
+      btn.setAttribute('href', '#');
+      btn.setAttribute('aria-disabled', 'true');
+      btn.innerHTML = '<span class="pay-btn-icon">&#128274;</span> Pay $20 &amp; Proceed to Application';
+    }
+  }
+</script>
+</body>
+</html>
